@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Class untuk resource Pengajar
  *
@@ -35,7 +35,6 @@ class Pengajar extends MY_Controller
     function __construct()
     {
         parent::__construct();
-
         must_login();
     }
 
@@ -46,7 +45,7 @@ class Pengajar extends MY_Controller
         }
 
         $status_id = $segment_3;
-        if ($status_id == '' OR $status_id > 2) {
+        if ($status_id == '' or $status_id > 2) {
             $status_id = 1;
         }
 
@@ -55,7 +54,7 @@ class Pengajar extends MY_Controller
             $page_no = 1;
         }
 
-        $base_url_module = 'pengajar/index/'.$status_id.'/';
+        $base_url_module = 'pengajar/index/' . $status_id . '/';
 
         # ambil semua data pengajar
         $retrieve_all = $this->pengajar_model->retrieve_all(20, $page_no, $status_id);
@@ -72,7 +71,7 @@ class Pengajar extends MY_Controller
         $data['comp_js']  = $html_js;
         $data['comp_css'] = load_comp_css(array(base_url('assets/comp/colorbox/colorbox.css')));
 
-        if (isset($_POST['status_id']) AND !empty($_POST['status_id'])) {
+        if (isset($_POST['status_id']) and !empty($_POST['status_id'])) {
             $post_status_id = $this->input->post('status_id', TRUE);
             $pengajar_ids   = $this->input->post('pengajar_id', TRUE);
 
@@ -112,7 +111,7 @@ class Pengajar extends MY_Controller
         }
 
         $status_id = $segment_3;
-        if ($status_id == '' OR $status_id > 3) {
+        if ($status_id == '' or $status_id > 3) {
             redirect('pengajar/index/1');
         }
 
@@ -123,18 +122,18 @@ class Pengajar extends MY_Controller
         $config['max_size']      = '0';
         $config['max_width']     = '0';
         $config['max_height']    = '0';
-        $config['file_name']     = 'pengajar-'.url_title($this->input->post('nama', TRUE), '-', true);
+        $config['file_name']     = 'pengajar-' . url_title($this->input->post('nama', TRUE), '-', true);
         $this->upload->initialize($config);
 
-        if (!empty($_FILES['userfile']['tmp_name']) AND !$this->upload->do_upload()) {
-            $data['error_upload'] = '<span class="text-error">'.$this->upload->display_errors().'</span>';
+        if (!empty($_FILES['userfile']['tmp_name']) and !$this->upload->do_upload()) {
+            $data['error_upload'] = '<span class="text-error">' . $this->upload->display_errors() . '</span>';
             $error_upload = true;
         } else {
             $data['error_upload'] = '';
             $error_upload = false;
         }
 
-        if ($this->form_validation->run('pengajar/add') == TRUE AND !$error_upload) {
+        if ($this->form_validation->run('pengajar/add') == TRUE and !$error_upload) {
             $nip           = $this->input->post('nip', TRUE);
             $nama          = $this->input->post('nama', TRUE);
             $jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
@@ -150,7 +149,7 @@ class Pengajar extends MY_Controller
             if (empty($thn_lahir)) {
                 $tanggal_lahir = null;
             } else {
-                $tanggal_lahir = $thn_lahir.'-'.$bln_lahir.'-'.$tgl_lahir;
+                $tanggal_lahir = $thn_lahir . '-' . $bln_lahir . '-' . $tgl_lahir;
             }
 
             if (!empty($_FILES['userfile']['tmp_name'])) {
@@ -200,10 +199,9 @@ class Pengajar extends MY_Controller
 
             $this->session->set_flashdata('pengajar', get_alert('success', 'Data Pengajar berhasil disimpan.'));
             redirect('pengajar/index/1');
-
         } else {
             $upload_data = $this->upload->data();
-            if (!empty($upload_data) AND is_file(get_path_image($upload_data['file_name']))) {
+            if (!empty($upload_data) and is_file(get_path_image($upload_data['file_name']))) {
                 unlink(get_path_image($upload_data['file_name']));
             }
         }
@@ -226,7 +224,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -237,7 +235,7 @@ class Pengajar extends MY_Controller
         $data['pengajar_id']  = $pengajar_id;
         $data['pengajar']     = $retrieve_pengajar;
 
-        if ($this->form_validation->run('pengajar/edit_profile') == TRUE AND (!is_demo_app() OR !$retrieve_login['is_admin'])) {
+        if ($this->form_validation->run('pengajar/edit_profile') == TRUE and (!is_demo_app() or !$retrieve_login['is_admin'])) {
             $nip           = $this->input->post('nip', TRUE);
             $nama          = $this->input->post('nama', TRUE);
             $jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
@@ -257,7 +255,7 @@ class Pengajar extends MY_Controller
             if (empty($thn_lahir)) {
                 $tanggal_lahir = null;
             } else {
-                $tanggal_lahir = $thn_lahir.'-'.$bln_lahir.'-'.$tgl_lahir;
+                $tanggal_lahir = $thn_lahir . '-' . $bln_lahir . '-' . $tgl_lahir;
             }
 
             # update pengajar
@@ -288,7 +286,7 @@ class Pengajar extends MY_Controller
             }
 
             $this->session->set_flashdata('edit', get_alert('success', 'Profil pengajar berhasil diperbaharui.'));
-            redirect('pengajar/edit_profile/'.$status_id.'/'.$pengajar_id);
+            redirect('pengajar/edit_profile/' . $status_id . '/' . $pengajar_id);
         }
 
         $this->twig->display('edit-pengajar-profile.html', $data);
@@ -312,7 +310,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             show_error('Akses ditolak');
         }
 
@@ -355,7 +353,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -371,10 +369,10 @@ class Pengajar extends MY_Controller
         $config['max_size']      = '0';
         $config['max_width']     = '0';
         $config['max_height']    = '0';
-        $config['file_name']     = 'pengajar-'.url_title($retrieve_pengajar['nama'], '-', true);
+        $config['file_name']     = 'pengajar-' . url_title($retrieve_pengajar['nama'], '-', true);
         $this->upload->initialize($config);
 
-        if ($this->upload->do_upload() AND (!is_demo_app() OR !$retrieve_login['is_admin'])) {
+        if ($this->upload->do_upload() and (!is_demo_app() or !$retrieve_login['is_admin'])) {
 
             if (is_file(get_path_image($retrieve_pengajar['foto']))) {
                 unlink(get_path_image($retrieve_pengajar['foto']));
@@ -420,10 +418,10 @@ class Pengajar extends MY_Controller
             );
 
             $this->session->set_flashdata('edit', get_alert('success', 'Foto pengajar berhasil diperbaharui.'));
-            redirect('pengajar/edit_picture/'.$status_id.'/'.$pengajar_id);
+            redirect('pengajar/edit_picture/' . $status_id . '/' . $pengajar_id);
         } else {
             if (!empty($_FILES['userfile']['tmp_name'])) {
-                $data['error_upload'] = '<span class="text-error">'.$this->upload->display_errors().'</span>';
+                $data['error_upload'] = '<span class="text-error">' . $this->upload->display_errors() . '</span>';
             }
         }
 
@@ -445,7 +443,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -453,7 +451,7 @@ class Pengajar extends MY_Controller
         $data['pengajar_id']  = $pengajar_id;
         $data['login']        = $this->login_model->retrieve(null, null, null, null, $pengajar_id);
 
-        if ($this->form_validation->run('pengajar/edit_username') == TRUE AND (!is_demo_app() OR !$data['login']['is_admin'])) {
+        if ($this->form_validation->run('pengajar/edit_username') == TRUE and (!is_demo_app() or !$data['login']['is_admin'])) {
             $login_id = $this->input->post('login_id', TRUE);
             $username = $this->input->post('username', TRUE);
 
@@ -469,11 +467,11 @@ class Pengajar extends MY_Controller
                 );
             } catch (Exception $e) {
                 $this->session->set_flashdata('edit', get_alert('warning', $e->getMessage()));
-                redirect('pengajar/edit_username/'.$status_id.'/'.$pengajar_id);
+                redirect('pengajar/edit_username/' . $status_id . '/' . $pengajar_id);
             }
 
             $this->session->set_flashdata('edit', get_alert('success', 'Username pengajar berhasil diperbaharui.'));
-            redirect('pengajar/edit_username/'.$status_id.'/'.$pengajar_id);
+            redirect('pengajar/edit_username/' . $status_id . '/' . $pengajar_id);
         }
 
         $this->twig->display('edit-pengajar-username.html', $data);
@@ -494,7 +492,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -504,14 +502,14 @@ class Pengajar extends MY_Controller
         $retrieve_login = $this->login_model->retrieve(null, null, null, null, $pengajar_id);
         $data['login']  = $retrieve_login;
 
-        if ($this->form_validation->run('pengajar/edit_password') == TRUE AND (!is_demo_app() OR !$retrieve_login['is_admin'])) {
+        if ($this->form_validation->run('pengajar/edit_password') == TRUE and (!is_demo_app() or !$retrieve_login['is_admin'])) {
             $password = $this->input->post('password2', TRUE);
 
             # update password
             $this->login_model->update_password($retrieve_login['id'], $password);
 
             $this->session->set_flashdata('edit', get_alert('success', 'Password pengajar berhasil diperbaharui.'));
-            redirect('pengajar/edit_password/'.$status_id.'/'.$pengajar_id);
+            redirect('pengajar/edit_password/' . $status_id . '/' . $pengajar_id);
         }
 
         $this->twig->display('edit-pengajar-password.html', $data);
@@ -557,7 +555,7 @@ class Pengajar extends MY_Controller
         $status_id    = (int)$segment_3;
         $pengajar_id  = (int)$segment_4;
         $hari_id      = (int)$segment_5;
-        if ($hari_id < 1 OR $hari_id > 7) {
+        if ($hari_id < 1 or $hari_id > 7) {
             exit('Hari tidak ditemukan');
         }
 
@@ -567,7 +565,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -575,6 +573,7 @@ class Pengajar extends MY_Controller
         $data['pengajar_id'] = $pengajar_id;
         $data['hari_id']     = $hari_id;
         $data['kelas']       = $this->kelas_model->retrieve_all_child();
+        $data['mapel']       = $this->db->get('mapel')->result_array();
 
         if ($this->form_validation->run('pengajar/ampuan') == TRUE) {
             $mapel_kelas_id = $this->input->post('mapel_kelas_id', TRUE);
@@ -590,7 +589,7 @@ class Pengajar extends MY_Controller
             );
 
             $this->session->set_flashdata('add', get_alert('success', 'Jadwal Matapelajaran berhasil disimpan.'));
-            redirect('pengajar/add_ampuan/'.$status_id.'/'.$pengajar_id.'/'.$hari_id);
+            redirect('pengajar/add_ampuan/' . $status_id . '/' . $pengajar_id . '/' . $hari_id);
         }
 
         $this->twig->display('tambah-pengajar-ampuan.html', $data);
@@ -612,7 +611,7 @@ class Pengajar extends MY_Controller
         }
 
         # jika sebagai pengajar, hanya profilnya dia yang bisa diupdate
-        if (is_pengajar() AND get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
+        if (is_pengajar() and get_sess_data('user', 'id') != $retrieve_pengajar['id']) {
             exit('Akses ditolak');
         }
 
@@ -646,7 +645,7 @@ class Pengajar extends MY_Controller
             );
 
             $this->session->set_flashdata('edit', get_alert('success', 'Jadwal Ajar berhasil diperbaharui.'));
-            redirect('pengajar/edit_ampuan/'.$status_id.'/'.$pengajar_id.'/'.$retrieve_ma['id']);
+            redirect('pengajar/edit_ampuan/' . $status_id . '/' . $pengajar_id . '/' . $retrieve_ma['id']);
         }
 
         $this->twig->display('edit-pengajar-ampuan.html', $data);
@@ -684,11 +683,9 @@ class Pengajar extends MY_Controller
             $this->session->set_userdata('filter_pengajar', $filter);
 
             redirect('pengajar/filter');
-
         } elseif (!empty($session_filter)) {
 
             $filter = $this->session->userdata('filter_pengajar');
-
         } else {
 
             $filter = array();
@@ -702,7 +699,6 @@ class Pengajar extends MY_Controller
                 'next_page'    => 0,
                 'prev_page'    => 0
             );
-
         }
 
         if (empty($filter)) {
@@ -729,7 +725,18 @@ class Pengajar extends MY_Controller
 
         if (!empty($filter)) {
             $retrieve_all = $this->pengajar_model->retrieve_all_filter(
-                $filter['nip'], $filter['nama'], $filter['jenis_kelamin'], $filter['tempat_lahir'], $filter['tgl_lahir'], $filter['bln_lahir'], $filter['thn_lahir'], $filter['alamat'], $filter['status_id'], $filter['username'], $filter['is_admin'], $page_no
+                $filter['nip'],
+                $filter['nama'],
+                $filter['jenis_kelamin'],
+                $filter['tempat_lahir'],
+                $filter['tgl_lahir'],
+                $filter['bln_lahir'],
+                $filter['thn_lahir'],
+                $filter['alamat'],
+                $filter['status_id'],
+                $filter['username'],
+                $filter['is_admin'],
+                $page_no
             );
         }
 
@@ -753,7 +760,7 @@ class Pengajar extends MY_Controller
             $pengajar_ids = $this->input->post('pengajar_id', TRUE);
             $status_id    = (int)$this->input->post('status_id', TRUE);
 
-            if (!empty($pengajar_ids) AND is_array($pengajar_ids)) {
+            if (!empty($pengajar_ids) and is_array($pengajar_ids)) {
 
                 if (empty($status_id)) {
                     $this->session->set_flashdata('pengajar', get_alert('warning', 'Tidak ada aksi yang dipilih.'));
@@ -781,17 +788,15 @@ class Pengajar extends MY_Controller
                 $label = '';
                 if (!empty($status_id)) {
                     $label_status = array('Pending', 'Aktif', 'Blocking');
-                    $label .= 'status = '.$label_status[$status_id];
+                    $label .= 'status = ' . $label_status[$status_id];
                 }
 
-                $this->session->set_flashdata('pengajar', get_alert('success', 'Pengajar berhasil diperbaharui ('.$label.').'));
+                $this->session->set_flashdata('pengajar', get_alert('success', 'Pengajar berhasil diperbaharui (' . $label . ').'));
                 redirect('pengajar/filter');
-
             } else {
                 $this->session->set_flashdata('pengajar', get_alert('warning', 'Tidak ada pengajar yang dipilih.'));
                 redirect('pengajar/filter');
             }
-
         } else {
             redirect('pengajar/filter');
         }

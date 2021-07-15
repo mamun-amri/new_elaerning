@@ -18,10 +18,10 @@
             <td style="font-size: 15px; font-weight: bold;">LAPORAN KEGIATAN PEMBELAJARAN DARING</td>
         </tr>
         <tr>
-            <td style="font-size: 15px; font-weight: bold;">TAFRIIJUL AHKAM CIKIRAY</td>
+            <td style="font-size: 15px; font-weight: bold;">SMK INSAN MULYA KIBIN</td>
         </tr>
         <tr>
-            <td style="font-size: 10px;">JL. WARUNG JAUD No.85 SERANG TELP. (0254) 200944</td>
+            <td style="font-size: 10px;">Jl. Raya Serang - Jkt No.Km. 20, Kibin, Kec. Kibin, Serang, Banten</td>
         </tr>
     </table>
     <hr>
