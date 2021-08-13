@@ -30,6 +30,7 @@ Pengaturan - {{ parent() }}
                     <br>Ganti logo <small>(Ukuran terbaik 120 x 122 pixel)</small><br>
                     <input type="file" name="logo-sekolah">
                 </div>
+
             </div>
             <div class="control-group">
                 <label class="control-label">Nama sekolah <span class="text-error">*</span></label>
@@ -108,7 +109,7 @@ Pengaturan - {{ parent() }}
                     <textarea name="peraturan-elearning" class="texteditor" style="width:100%; height:300px;">{{ set_value('peraturan-elearning', get_pengaturan('peraturan-elearning', 'value'))|raw }}</textarea>
                 </div>
             </div>
-            <div class="control-group">
+            <!-- <div class="control-group">
                 <label class="control-label">Email server</label>
                 <div class="controls">
                     <input type="text" name="email-server" class="span5" value="{{ set_value('email-server', get_pengaturan('email-server', 'value')) }}">
@@ -128,7 +129,7 @@ Pengaturan - {{ parent() }}
                     <input type="text" name="smtp-username" class="span5" value="{{ set_value('smtp-username', get_pengaturan('smtp-username', 'value')) }}">
                     <br>{{ form_error('smtp-username')|raw }}
                 </div>
-            </div>
+            </div> 
             {% if is_demo_app() == false %}
             <div class="control-group">
                 <label class="control-label">SMTP password</label>
@@ -145,6 +146,7 @@ Pengaturan - {{ parent() }}
                     <br>{{ form_error('smtp-port')|raw }}
                 </div>
             </div>
+            -->
             <div class="control-group">
                 <label class="control-label">Edit username siswa</label>
                 <div class="controls">

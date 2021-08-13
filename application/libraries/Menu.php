@@ -20,8 +20,8 @@ class Menu
         $this->menus['admin'] = array(
             0 => array(
                 '<a href="' . site_url() . '"><i class="menu-icon icon-home"></i>Beranda</a>',
-                '<a href="' . site_url('pengumuman') . '"><i class="menu-icon icon-bullhorn"></i>Pengumuman</a>',
-                //'<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>'
+                // '<a href="' . site_url('pengumuman') . '"><i class="menu-icon icon-bullhorn"></i>Pengumuman</a>',
+                '<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>'
             ),
             1 => array(
                 '<a href="' . site_url('siswa') . '"><i class="menu-icon icon-group"></i>Siswa <span class="menu-count-pending-siswa"></span></a>',
@@ -55,6 +55,7 @@ class Menu
             ),
 
             6 => array(
+                '<a href="' . site_url('login/login_log/1') . '"><i class="menu-icon icon-signin"></i>Riwayat Login </a>',
                 '<a href="' . site_url('login/logout') . '"><i class="menu-icon icon-signout"></i>Logout </a>'
             )
         );
@@ -62,8 +63,8 @@ class Menu
         $this->menus['pengajar'] = array(
             0 => array(
                 '<a href="' . site_url() . '"><i class="menu-icon icon-home"></i>Beranda</a>',
-                '<a href="' . site_url('pengumuman') . '"><i class="menu-icon icon-bullhorn"></i>Pengumuman</a>',
-                //'<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>',
+                // '<a href="' . site_url('pengumuman') . '"><i class="menu-icon icon-bullhorn"></i>Pengumuman</a>',
+                '<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>',
                 // '<a href="' . site_url('pengajar/jadwal') . '"><i class="menu-icon icon-tasks"></i>Jadwal Mengajar </a>'
             ),
             1 => array(
@@ -83,8 +84,8 @@ class Menu
         $this->menus['siswa'] = array(
             0 => array(
                 '<a href="' . site_url() . '"><i class="menu-icon icon-home"></i>Beranda</a>',
-                // '<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>',
-                '<a href="' . site_url('siswa/jadwal_mapel') . '"><i class="menu-icon icon-tasks"></i>Jadwal Matapelajaran</a>'
+                '<a href="' . site_url('message') . '"><i class="menu-icon icon-comments"></i>Pesan <span class="menu-count-new-msg"></span></a>',
+                // '<a href="' . site_url('siswa/jadwal_mapel') . '"><i class="menu-icon icon-tasks"></i>Jadwal Matapelajaran</a>'
             ),
             1 => array(
                 '<a href="' . site_url('tugas?clear_filter=true') . '"><i class="menu-icon icon-tasks"></i>Tugas </a>',

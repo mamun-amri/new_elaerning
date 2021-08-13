@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Twig
 {
@@ -9,7 +9,7 @@ class Twig
 
     function __construct()
     {
-        $this->CI =& get_instance();
+        $this->CI = &get_instance();
         $this->CI->config->load('twig');
         ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'libraries/Twig');
         require_once (string)'Autoloader.php';
@@ -19,9 +19,9 @@ class Twig
         Twig_Autoloader::register();
 
         if ($this->CI->uri->segment(1) == 'setup') {
-            $this->_template_dir = $this->CI->config->item('template_dir').'/install';
+            $this->_template_dir = $this->CI->config->item('template_dir') . '/install';
         } else {
-            $this->_template_dir = $this->CI->config->item('template_dir').'/'.get_active_theme();
+            $this->_template_dir = $this->CI->config->item('template_dir') . '/' . get_active_theme();
         }
         $this->_cache_dir = $this->CI->config->item('cache_dir');
 
@@ -40,18 +40,19 @@ class Twig
 
         $loader = new Twig_Loader_Filesystem($twig_template_dir);
 
-        $this->_twig = new Twig_Environment($loader, array(
+        $this->_twig = new Twig_Environment(
+            $loader,
+            array(
                 'cache' => $this->_cache_dir,
                 'debug' => true,
             )
         );
 
-        foreach(get_defined_functions() as $functions) {
-            foreach($functions as $function) {
+        foreach (get_defined_functions() as $functions) {
+            foreach ($functions as $function) {
                 $this->_twig->addFunction($function, new Twig_Function_Function($function));
             }
         }
-
     }
 
     public function add_function($name)

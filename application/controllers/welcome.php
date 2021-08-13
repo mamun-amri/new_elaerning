@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Class untuk halaman utama
@@ -41,7 +41,7 @@ class Welcome extends MY_Controller
         if (is_siswa()) {
             $kelas_aktif = $this->siswa_kelas_aktif;
             $retrieve_kelas = $this->kelas_model->retrieve($kelas_aktif['kelas_id']);
-            
+
             $retrieve_all_materi = $this->materi_model->retrieve_all(
                 10,
                 1,
@@ -127,10 +127,10 @@ class Welcome extends MY_Controller
             # bagian hapus gambar
             if (!empty($_GET['delete-img'])) {
                 $img_id = (int)$_GET['delete-img'];
-                if ($img_id > 0 AND $img_id <= 4) {
+                if ($img_id > 0 and $img_id <= 4) {
                     $key      = 'img-slide-' . $img_id;
                     $retrieve = $this->config_model->retrieve($key);
-                    if (!empty($retrieve) AND !empty($retrieve['value'])) {
+                    if (!empty($retrieve) and !empty($retrieve['value'])) {
 
                         # hapus file
                         if (is_file(get_path_image($retrieve['value']))) {
@@ -138,14 +138,13 @@ class Welcome extends MY_Controller
                         }
 
                         $this->config_model->update($key, $key, '');
-
                     }
                 }
 
                 if ($img_id == 5) {
                     $key      = 'logo-sekolah';
                     $retrieve = $this->config_model->retrieve($key);
-                    if (!empty($retrieve) AND !empty($retrieve['value'])) {
+                    if (!empty($retrieve) and !empty($retrieve['value'])) {
 
                         # hapus file
                         if (is_file(get_path_image($retrieve['value']))) {
@@ -153,7 +152,6 @@ class Welcome extends MY_Controller
                         }
 
                         $this->config_model->update($key, $key, '');
-
                     }
                 }
 
@@ -178,9 +176,9 @@ class Welcome extends MY_Controller
                         $config = array();
                         $config['upload_path']   = get_path_image();
                         $config['allowed_types'] = 'jpg|jpeg|png';
-                        $config['max_size']      = '0';
-                        $config['max_width']     = '0';
-                        $config['max_height']    = '0';
+                        // $config['max_size']      = '0';
+                        // $config['max_width']     = '0';
+                        // $config['max_height']    = '0';
                         $config['file_name']     = $key;
                         $this->upload->initialize($config);
 
@@ -253,7 +251,7 @@ class Welcome extends MY_Controller
             ));
 
             # kelas aktif
-            if (!empty($kelas_siswa) AND $val['status_id'] != 3) {
+            if (!empty($kelas_siswa) and $val['status_id'] != 3) {
                 $kelas              = $this->kelas_model->retrieve($kelas_siswa['kelas_id']);
                 $val['kelas_aktif'] = $kelas;
             }
@@ -514,7 +512,7 @@ class Welcome extends MY_Controller
 
                     redirect('welcome/hapus_data');
                 }
-            break;
+                break;
 
             case 'pengajar':
                 $this->form_validation->set_rules('pengajar_id', 'Pengajar ID', 'required|trim|xss_clean');
@@ -631,7 +629,7 @@ class Welcome extends MY_Controller
 
                     redirect('welcome/hapus_data');
                 }
-            break;
+                break;
 
             case 'tugas':
                 $this->form_validation->set_rules('tugas_id', 'Tugas ID', 'required|trim|xss_clean');
@@ -691,7 +689,7 @@ class Welcome extends MY_Controller
 
                     redirect('welcome/hapus_data');
                 }
-            break;
+                break;
         }
 
         $this->twig->display('hapus-data.html', $data);

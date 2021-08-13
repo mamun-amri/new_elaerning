@@ -128,7 +128,7 @@ Filter Siswa - {{ parent() }}
                                 <label class="checkbox inline"><input type="checkbox" name="status_id[]" value="1" {{ set_checkbox('status_id[]', '1', (filter.status_id is defined and 1 in filter.status_id) ? TRUE : FALSE) }}> Aktif</label>
                                 <label class="checkbox inline"><input type="checkbox" name="status_id[]" value="2" {{ set_checkbox('status_id[]', '2', (filter.status_id is defined and 2 in filter.status_id) ? TRUE : FALSE) }}> Blocking</label>
                                 {% endif %}
-                                <label class="checkbox inline"><input type="checkbox" name="status_id[]" value="3" {{ set_checkbox('status_id[]', '3', (filter.status_id is defined and 3 in filter.status_id) ? TRUE : FALSE) }}> Alumni</label>
+                                <!-- <label class="checkbox inline"><input type="checkbox" name="status_id[]" value="3" {{ set_checkbox('status_id[]', '3', (filter.status_id is defined and 3 in filter.status_id) ? TRUE : FALSE) }}> Alumni</label> -->
                             </p>
                         </td>
                     <tr>

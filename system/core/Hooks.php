@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -26,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/encryption.html
  */
-class CI_Hooks {
+class CI_Hooks
+{
 
 	/**
 	 * Determines wether hooks are enabled
@@ -67,35 +68,30 @@ class CI_Hooks {
 	 */
 	function _initialize()
 	{
-		$CFG =& load_class('Config', 'core');
+		$CFG = &load_class('Config', 'core');
 
 		// If hooks are not enabled in the config file
 		// there is nothing else to do
 
-		if ($CFG->item('enable_hooks') == FALSE)
-		{
+		if ($CFG->item('enable_hooks') == FALSE) {
 			return;
 		}
 
 		// Grab the "hooks" definition file.
 		// If there are no hooks, we're done.
 
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/hooks.php'))
-		{
-		    include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
-		}
-		elseif (is_file(APPPATH.'config/hooks.php'))
-		{
-			include(APPPATH.'config/hooks.php');
+		if (defined('ENVIRONMENT') and is_file(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php')) {
+			include(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php');
+		} elseif (is_file(APPPATH . 'config/hooks.php')) {
+			include(APPPATH . 'config/hooks.php');
 		}
 
 
-		if ( ! isset($hook) OR ! is_array($hook))
-		{
+		if (!isset($hook) or !is_array($hook)) {
 			return;
 		}
 
-		$this->hooks =& $hook;
+		$this->hooks = &$hook;
 		$this->enabled = TRUE;
 	}
 
@@ -112,20 +108,15 @@ class CI_Hooks {
 	 */
 	function _call_hook($which = '')
 	{
-		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
-		{
+		if (!$this->enabled or !isset($this->hooks[$which])) {
 			return FALSE;
 		}
 
-		if (isset($this->hooks[$which][0]) AND is_array($this->hooks[$which][0]))
-		{
-			foreach ($this->hooks[$which] as $val)
-			{
+		if (isset($this->hooks[$which][0]) and is_array($this->hooks[$which][0])) {
+			foreach ($this->hooks[$which] as $val) {
 				$this->_run_hook($val);
 			}
-		}
-		else
-		{
+		} else {
 			$this->_run_hook($this->hooks[$which]);
 		}
 
@@ -145,8 +136,7 @@ class CI_Hooks {
 	 */
 	function _run_hook($data)
 	{
-		if ( ! is_array($data))
-		{
+		if (!is_array($data)) {
 			return FALSE;
 		}
 
@@ -157,8 +147,7 @@ class CI_Hooks {
 		// If the script being called happens to have the same
 		// hook call within it a loop can happen
 
-		if ($this->in_progress == TRUE)
-		{
+		if ($this->in_progress == TRUE) {
 			return;
 		}
 
@@ -166,15 +155,13 @@ class CI_Hooks {
 		// Set file path
 		// -----------------------------------
 
-		if ( ! isset($data['filepath']) OR ! isset($data['filename']))
-		{
+		if (!isset($data['filepath']) or !isset($data['filename'])) {
 			return FALSE;
 		}
 
-		$filepath = APPPATH.$data['filepath'].'/'.$data['filename'];
+		$filepath = APPPATH . $data['filepath'] . '/' . $data['filename'];
 
-		if ( ! file_exists($filepath))
-		{
+		if (!file_exists($filepath)) {
 			return FALSE;
 		}
 
@@ -186,23 +173,19 @@ class CI_Hooks {
 		$function	= FALSE;
 		$params		= '';
 
-		if (isset($data['class']) AND $data['class'] != '')
-		{
+		if (isset($data['class']) and $data['class'] != '') {
 			$class = $data['class'];
 		}
 
-		if (isset($data['function']))
-		{
+		if (isset($data['function'])) {
 			$function = $data['function'];
 		}
 
-		if (isset($data['params']))
-		{
+		if (isset($data['params'])) {
 			$params = $data['params'];
 		}
 
-		if ($class === FALSE AND $function === FALSE)
-		{
+		if ($class === FALSE and $function === FALSE) {
 			return FALSE;
 		}
 
@@ -216,20 +199,15 @@ class CI_Hooks {
 		// Call the requested class and/or function
 		// -----------------------------------
 
-		if ($class !== FALSE)
-		{
-			if ( ! class_exists($class))
-			{
+		if ($class !== FALSE) {
+			if (!class_exists($class)) {
 				require($filepath);
 			}
 
 			$HOOK = new $class;
 			$HOOK->$function($params);
-		}
-		else
-		{
-			if ( ! function_exists($function))
-			{
+		} else {
+			if (!function_exists($function)) {
 				require($filepath);
 			}
 
@@ -239,7 +217,6 @@ class CI_Hooks {
 		$this->in_progress = FALSE;
 		return TRUE;
 	}
-
 }
 
 // END CI_Hooks class
