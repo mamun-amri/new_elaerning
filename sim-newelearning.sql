@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2021 at 12:40 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Aug 13, 2021 at 10:06 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sim_newelearning`
+-- Database: `sim-newelearning`
 --
 
 -- --------------------------------------------------------
@@ -42,8 +42,7 @@ INSERT INTO `field_tambahan` (`id`, `nama`, `value`) VALUES
 ('history-mengerjakan-2-1', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-10 17:10:18\",\"selesai\":\"2021-07-10 17:20:18\",\"uri_string\":\"tugas\\/kerjakan\\/1\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"1\",\"mapel_id\":\"1\",\"pengajar_id\":\"3\",\"type_id\":\"3\",\"judul\":\"tugas bahasa indonesia\",\"durasi\":\"10\",\"info\":\"apa itu bahasa indonesia\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-10 14:49:40\",\"tampil_siswa\":\"1\"},\"unix_id\":\"183e0349627f3eb5386fc7dde7da62b1363476\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"pertanyaan_id\":[\"4\",\"1\"],\"tgl_submit\":\"2021-07-10 17:10:23\",\"total_waktu\":\"5 detik\"}'),
 ('history-mengerjakan-2-2', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-10 17:18:01\",\"selesai\":\"2021-07-10 17:28:01\",\"uri_string\":\"tugas\\/kerjakan\\/2\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"2\",\"mapel_id\":\"1\",\"pengajar_id\":\"3\",\"type_id\":\"3\",\"judul\":\"coba\",\"durasi\":\"10\",\"info\":\"\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-10 17:17:15\",\"tampil_siswa\":\"1\"},\"unix_id\":\"9a6fe453cda32a7e4b0a1e4f6d427d5771308\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"pertanyaan_id\":[\"5\"],\"nilai\":0,\"jml_benar\":0,\"jml_salah\":0,\"tgl_submit\":\"2021-07-10 17:23:58\",\"total_waktu\":\"5 menit 57 detik\"}'),
 ('history-mengerjakan-1-3', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-12 12:07:55\",\"selesai\":\"2021-07-12 12:17:55\",\"uri_string\":\"tugas\\/kerjakan\\/3\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"3\",\"mapel_id\":\"3\",\"pengajar_id\":\"2\",\"type_id\":\"2\",\"judul\":\"tambahan matematika\",\"durasi\":\"10\",\"info\":\"kerjakan dengan benar\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-12 12:07:12\",\"tampil_siswa\":\"1\"},\"unix_id\":\"42b47b9bef100dce99fa88010bc02f6c940699\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"pertanyaan_id\":[\"6\"],\"jawaban\":{\"6\":\"2\"},\"tgl_submit\":\"2021-07-12 12:08:04\",\"total_waktu\":\"9 detik\",\"nilai\":{\"6\":\"10\"}}'),
-('history-mengerjakan-1-4', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-12 12:33:33\",\"uri_string\":\"tugas\\/kerjakan\\/4\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"4\",\"mapel_id\":\"1\",\"pengajar_id\":\"2\",\"type_id\":\"1\",\"judul\":\"tugas bahasa indonesia\",\"durasi\":null,\"info\":\"\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-12 12:32:51\",\"tampil_siswa\":\"1\"},\"unix_id\":\"5791c3e8260ca7dab8d2aeda2d5acd19829871\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"file_name\":\"5791c3e8260ca7dab8d2aeda2d5acd19829871.pdf\",\"tgl_submit\":\"2021-07-12 12:33:56\",\"nilai\":\"10\"}'),
-('history-mengerjakan-1-5', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-17 14:19:44\",\"selesai\":\"2021-07-17 14:29:44\",\"uri_string\":\"tugas\\/kerjakan\\/5\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"5\",\"mapel_id\":\"6\",\"pengajar_id\":\"2\",\"type_id\":\"2\",\"judul\":\"TUGAS TUBUH MANUSIA\",\"durasi\":\"10\",\"info\":\"\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-17 14:18:27\",\"tampil_siswa\":\"1\"},\"unix_id\":\"d5faa648e67dc07fbe5c80983c5a49d1281131\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"pertanyaan_id\":[\"7\"],\"jawaban\":{\"7\":\"tuhakjdkha\"},\"tgl_submit\":\"2021-07-17 14:20:00\",\"total_waktu\":\"16 detik\",\"nilai\":{\"7\":\"5\"}}');
+('history-mengerjakan-1-4', 'History pengerjaan tugas', '{\"mulai\":\"2021-07-12 12:33:33\",\"uri_string\":\"tugas\\/kerjakan\\/4\",\"valid_route\":[\"\\/tugas\\/kerjakan\",\"\\/tugas\\/finish\",\"\\/tugas\\/submit_essay\",\"\\/tugas\\/submit_upload\"],\"tugas\":{\"id\":\"4\",\"mapel_id\":\"1\",\"pengajar_id\":\"2\",\"type_id\":\"1\",\"judul\":\"tugas bahasa indonesia\",\"durasi\":null,\"info\":\"\",\"aktif\":\"1\",\"tgl_buat\":\"2021-07-12 12:32:51\",\"tampil_siswa\":\"1\"},\"unix_id\":\"5791c3e8260ca7dab8d2aeda2d5acd19829871\",\"ip\":\"127.0.0.1\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"file_name\":\"5791c3e8260ca7dab8d2aeda2d5acd19829871.pdf\",\"tgl_submit\":\"2021-07-12 12:33:56\",\"nilai\":\"10\"}');
 
 -- --------------------------------------------------------
 
@@ -64,24 +63,21 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id`, `nama`, `parent_id`, `urutan`, `aktif`) VALUES
-(1, 'KELAS X', NULL, 1, 1),
-(2, 'KELAS X - KIMIA', 1, 2, 1),
-(3, 'KELAS X - MULTIMEDIA', 1, 3, 1),
-(4, 'KELAS X APK', 1, 4, 1),
-(5, 'KELAS X AKT', 1, 5, 1),
-(6, 'KELAS XI', NULL, 6, 1),
-(7, 'KELAS XI KIMIA', 6, 7, 1),
-(8, 'KELAS XI MULTIMEDIA', 6, 8, 1),
-(9, 'KELAS XI APK', 6, 9, 1),
-(10, 'KELAS XI AKT', 6, 10, 1),
-(11, 'KELAS XII', NULL, 11, 1),
-(12, 'KELAS XII KIMIA', 11, 12, 1),
-(13, 'KELAS XI MULTIMEDIA', 11, 13, 1),
-(14, 'KELAS XII APK', 11, 14, 1),
-(15, 'KELAS XI AKT', 11, 15, 1),
-(16, 'KELAS X TKR', 1, 6, 1),
-(17, 'KELAS XI TKR', 6, 11, 1),
-(18, 'KELAS XII TKR', 11, 16, 1);
+(1, 'KELAS VII', NULL, 1, 1),
+(2, 'KELAS VII - A', 1, 2, 1),
+(3, 'KELAS VII - B', 1, 3, 0),
+(4, 'KELAS VII - C', 1, 4, 0),
+(5, 'KELAS VII - D', 1, 5, 0),
+(6, 'KELAS VIII', NULL, 6, 1),
+(7, 'KELAS VIII - A', 6, 7, 1),
+(8, 'KELAS VIII - B', 6, 8, 0),
+(9, 'KELAS VIII - C', 6, 9, 0),
+(10, 'KELAS VIII - D', 6, 10, 0),
+(11, 'KELAS IX', NULL, 11, 1),
+(12, 'KELAS IX - A', 11, 12, 1),
+(13, 'KELAS IX - B', 11, 13, 0),
+(14, 'KELAS IX - C', 11, 14, 0),
+(15, 'KELAS IX - D', 11, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -126,9 +122,7 @@ CREATE TABLE `komentar` (
 
 INSERT INTO `komentar` (`id`, `login_id`, `materi_id`, `tampil`, `konten`, `tgl_posting`) VALUES
 (1, 2, 1, 1, 'jangan lupa pahami', '2021-07-12 12:58:03'),
-(2, 3, 1, 1, 'pak klw beda nya opini sama opsi itu apa?', '2021-07-12 16:11:17'),
-(3, 3, 3, 1, 'pak 1+1 berapa?', '2021-07-17 14:26:50'),
-(4, 2, 3, 1, 'ya 2 lah pinter', '2021-07-17 14:27:11');
+(2, 3, 1, 1, 'pak klw beda nya opini sama opsi itu apa?', '2021-07-12 16:11:17');
 
 -- --------------------------------------------------------
 
@@ -154,7 +148,7 @@ INSERT INTO `login` (`id`, `username`, `password`, `siswa_id`, `pengajar_id`, `i
 (1, 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, 1, 1, NULL),
 (2, 'dani@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, 2, 0, NULL),
 (3, 'ahmad@gmail.com', '202cb962ac59075b964b07152d234b70', 1, NULL, 0, NULL),
-(4, 'yogas@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL, 0, NULL),
+(4, 'yogas@gmail.com', '202cb962ac59075b964b07152d234b70', 2, NULL, 0, NULL),
 (5, 'deni@gmail.com', '202cb962ac59075b964b07152d234b70', 3, NULL, 0, NULL),
 (6, 'umroh@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, 3, 0, NULL);
 
@@ -209,18 +203,9 @@ INSERT INTO `login_log` (`id`, `login_id`, `lasttime`, `agent`, `last_activity`)
 (30, 1, '2021-07-14 12:21:23', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626240643),
 (31, 1, '2021-07-14 17:42:31', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626259965),
 (32, 1, '2021-07-14 17:55:07', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626260191),
-(33, 1, '2021-07-17 13:39:25', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626506229),
-(34, 3, '2021-07-17 13:48:23', '{\"is_mobile\":0,\"browser\":\"Chrome 91.0.4472.114\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.114 Safari\\/537.36\",\"ip\":\"::1\"}', 1626504700),
-(35, 6, '2021-07-17 13:53:55', '{\"is_mobile\":0,\"browser\":\"Chrome 91.0.4472.114\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.114 Safari\\/537.36\",\"ip\":\"::1\"}', 1626504974),
-(36, 2, '2021-07-17 13:58:29', '{\"is_mobile\":0,\"browser\":\"Chrome 91.0.4472.114\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.114 Safari\\/537.36\",\"ip\":\"::1\"}', 1626507362),
-(37, 3, '2021-07-17 14:19:22', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626506407),
-(38, 1, '2021-07-17 14:22:18', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626506443),
-(39, 3, '2021-07-17 14:22:56', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626507268),
-(40, 4, '2021-07-17 14:36:37', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626507486),
-(41, 1, '2021-07-17 14:38:24', '{\"is_mobile\":0,\"browser\":\"Chrome 91.0.4472.114\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.114 Safari\\/537.36\",\"ip\":\"::1\"}', 1626507884),
-(42, 4, '2021-07-17 14:40:32', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626507861),
-(43, 1, '2021-07-17 16:38:54', '{\"is_mobile\":0,\"browser\":\"Firefox 89.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko\\/20100101 Firefox\\/89.0\",\"ip\":\"127.0.0.1\"}', 1626516916),
-(44, 1, '2021-07-17 16:43:36', '{\"is_mobile\":0,\"browser\":\"Chrome 91.0.4472.114\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Linux x86_64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/91.0.4472.114 Safari\\/537.36\",\"ip\":\"::1\"}', 1626515100);
+(33, 1, '2021-08-13 14:33:04', '{\"is_mobile\":0,\"browser\":\"Firefox 90.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko\\/20100101 Firefox\\/90.0\",\"ip\":\"127.0.0.1\"}', 1628841155),
+(34, 6, '2021-08-13 14:54:46', '{\"is_mobile\":0,\"browser\":\"Firefox 90.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko\\/20100101 Firefox\\/90.0\",\"ip\":\"127.0.0.1\"}', 1628841449),
+(35, 1, '2021-08-13 14:59:38', '{\"is_mobile\":0,\"browser\":\"Firefox 90.0\",\"platform\":\"Linux\",\"agent_string\":\"Mozilla\\/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko\\/20100101 Firefox\\/90.0\",\"ip\":\"127.0.0.1\"}', 1628841827);
 
 -- --------------------------------------------------------
 
@@ -312,9 +297,7 @@ CREATE TABLE `materi` (
 
 INSERT INTO `materi` (`id`, `mapel_id`, `pengajar_id`, `siswa_id`, `judul`, `konten`, `file`, `tgl_posting`, `publish`, `views`) VALUES
 (1, 1, 2, NULL, 'Pelajaran Tentang Opini', '<p>Apa yang di maksud opini ialah sebuah opini ya opini</p>\n', NULL, '2021-07-10', 1, 5),
-(2, 3, 3, NULL, 'tambahan', '1+1=2', NULL, '2021-07-10', 1, 2),
-(3, 3, 2, NULL, 'aljabar', '1+1=', NULL, '2021-07-17', 1, 3),
-(4, 1, 2, NULL, 'indonesia', NULL, 'indonesia_1626506930.png', '2021-07-17', 1, 2);
+(2, 3, 3, NULL, 'tambahan', '1+1=2', NULL, '2021-07-10', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -334,10 +317,7 @@ CREATE TABLE `materi_kelas` (
 
 INSERT INTO `materi_kelas` (`id`, `materi_id`, `kelas_id`) VALUES
 (1, 1, 1),
-(2, 2, 6),
-(5, 4, 2),
-(4, 3, 1),
-(6, 4, 1);
+(2, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -361,11 +341,7 @@ CREATE TABLE `messages` (
 
 INSERT INTO `messages` (`id`, `type_id`, `content`, `owner_id`, `sender_receiver_id`, `date`, `opened`) VALUES
 (1, 2, 'pak itu yang dimaksud apa ya?', 4, 2, '2021-07-10 14:45:26', 1),
-(2, 1, 'pak itu yang dimaksud apa ya?', 2, 4, '2021-07-10 14:45:26', 1),
-(3, 2, 'pak kpn belajar lagi?', 3, 2, '2021-07-17 14:35:06', 1),
-(4, 1, 'pak kpn belajar lagi?', 2, 3, '2021-07-17 14:35:06', 1),
-(5, 2, 'nanti ya kpn\"', 2, 3, '2021-07-17 14:35:31', 1),
-(6, 1, 'nanti ya kpn\"', 3, 2, '2021-07-17 14:35:31', 1);
+(2, 1, 'pak itu yang dimaksud apa ya?', 2, 4, '2021-07-10 14:45:26', 0);
 
 -- --------------------------------------------------------
 
@@ -387,8 +363,7 @@ CREATE TABLE `nilai_tugas` (
 INSERT INTO `nilai_tugas` (`id`, `nilai`, `tugas_id`, `siswa_id`) VALUES
 (6, 0, 2, 2),
 (7, 10, 3, 1),
-(8, 10, 4, 1),
-(9, 5, 5, 1);
+(8, 10, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -462,7 +437,11 @@ INSERT INTO `pengaturan` (`id`, `nama`, `value`) VALUES
 ('info-slide-2', 'info-slide-2', ''),
 ('info-slide-3', 'info-slide-3', ''),
 ('info-slide-4', 'info-slide-4', ''),
-('logo-sekolah', 'logo-sekolah', 'logo-sekolah.png');
+('logo-sekolah', 'logo-sekolah', 'logo-sekolah.png'),
+('img-slide-1', 'img-slide-1', 'img-slide-1.png'),
+('img-slide-2', 'img-slide-2', 'img-slide-2.png'),
+('img-slide-3', 'img-slide-3', 'img-slide-3.png'),
+('img-slide-4', 'img-slide-4', 'img-slide-4.png');
 
 -- --------------------------------------------------------
 
@@ -563,8 +542,7 @@ CREATE TABLE `tugas` (
 INSERT INTO `tugas` (`id`, `mapel_id`, `pengajar_id`, `type_id`, `judul`, `durasi`, `info`, `aktif`, `tgl_buat`, `tampil_siswa`) VALUES
 (2, 1, 3, 3, 'coba', 10, '', 0, '2021-07-10 17:17:15', 1),
 (3, 3, 2, 2, 'tambahan matematika', 10, 'kerjakan dengan benar', 0, '2021-07-12 12:07:12', 1),
-(4, 1, 2, 1, 'tugas bahasa indonesia', NULL, '', 0, '2021-07-12 12:32:51', 1),
-(5, 6, 2, 2, 'TUGAS TUBUH MANUSIA', 10, '', 0, '2021-07-17 14:18:27', 1);
+(4, 1, 2, 1, 'tugas bahasa indonesia', NULL, '', 0, '2021-07-12 12:32:51', 1);
 
 -- --------------------------------------------------------
 
@@ -587,8 +565,7 @@ INSERT INTO `tugas_kelas` (`id`, `tugas_id`, `kelas_id`) VALUES
 (2, 2, 7),
 (3, 3, 2),
 (4, 4, 7),
-(5, 4, 2),
-(6, 5, 2);
+(5, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -614,8 +591,7 @@ INSERT INTO `tugas_pertanyaan` (`id`, `pertanyaan`, `urutan`, `tugas_id`, `aktif
 (3, 'jadi apa itu bahasa indonesia?', 3, 1, 0),
 (4, 'apa aku dan kamu?', 2, 1, 1),
 (5, 'apa?', 1, 2, 1),
-(6, '1+2=?', 1, 3, 1),
-(7, 'APA ITU TUBUH?', 1, 5, 1);
+(6, '1+2=?', 1, 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -794,7 +770,7 @@ ALTER TABLE `tugas_pertanyaan`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kelas_siswa`
@@ -806,7 +782,7 @@ ALTER TABLE `kelas_siswa`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -818,7 +794,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `mapel`
@@ -842,25 +818,25 @@ ALTER TABLE `mapel_kelas`
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `materi_kelas`
 --
 ALTER TABLE `materi_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `nilai_tugas`
 --
 ALTER TABLE `nilai_tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pengajar`
@@ -890,19 +866,19 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tugas_kelas`
 --
 ALTER TABLE `tugas_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tugas_pertanyaan`
 --
 ALTER TABLE `tugas_pertanyaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
