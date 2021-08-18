@@ -122,7 +122,7 @@ class __TwigTemplate_bb6551513400fc954bbd9f4bdbe187cbbeb863fc55965217a298d6e1d19
                     <td>
                         <a class=\"btn btn-default\" href=\"";
             // line 55
-            echo twig_escape_filter($this->env, site_url(((("mapel/edit/" . $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "id")) . "/") . enurl_redirect(current_url()))), "html", null, true);
+            echo twig_escape_filter($this->env, site_url((("mapel/edit/" . $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "id")) . "/")), "html", null, true);
             echo "\"><i class=\"icon-edit\"></i> Edit</a>
                     </td>
                 </tr>
