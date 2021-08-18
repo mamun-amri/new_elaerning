@@ -22,7 +22,7 @@ Matapelajaran Kelas - {{ parent() }}
 
             <div id="form-add-mapel" {% if post_mapel == 0 %} class="collapse" {% endif %}>
                 {% if is_demo_app() == false %}
-                {{ form_open('kelas/mapel_kelas/add/' ~ parent['id'] ~ '/' ~ kelas['id'] ~ '/' ~ enurl_redirect(uri_back), {'class' : 'form-horizontal row-fluid', 'style' : 'margin-top:20px;'})|raw }}
+                {{ form_open('kelas/mapel_kelas/add/' ~ parent['id'] ~ '/' ~ kelas['id'] ~ '/' , {'class' : 'form-horizontal row-fluid', 'style' : 'margin-top:20px;'})|raw }}
                 {% endif %}
                     <input type="hidden" name="add-mapel" value="1">
                     <div class="control-group">
@@ -53,7 +53,7 @@ Matapelajaran Kelas - {{ parent() }}
         <br>
 
         {% if is_demo_app() == false %}
-        {{ form_open('kelas/mapel_kelas/add/' ~ parent['id'] ~ '/' ~ kelas['id'] ~ '/' ~ enurl_redirect(uri_back)) | raw }}
+        {{ form_open('kelas/mapel_kelas/add/' ~ parent['id'] ~ '/' ~ kelas['id'] ~ '/' ) | raw }}
         {% endif %}
         <table class="table table-striped">
         <tbody>

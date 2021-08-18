@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * Class untuk resource kelas
@@ -45,37 +45,38 @@ class Kelas extends MY_Controller
         }
     }
 
-    private function kelas_hirarki(&$str_kelas = "", $parent_id = null, $order = 0){
+    private function kelas_hirarki(&$str_kelas = "", $parent_id = null, $order = 0)
+    {
         $kelas = $this->kelas_model->retrieve_all($parent_id);
-        if(count($kelas) > 0){
-            if(is_null($parent_id)){
+        if (count($kelas) > 0) {
+            if (is_null($parent_id)) {
                 $str_kelas .= '<ol class="sortable" id="kelas">';
-            }else{
+            } else {
                 $str_kelas .= '<ol>';
             }
         }
 
-        foreach ($kelas as $m){
+        foreach ($kelas as $m) {
             $order++;
-            $str_kelas .= '<li id="list_'.$m['id'].'">
+            $str_kelas .= '<li id="list_' . $m['id'] . '">
             <div>
                 <span class="disclose" id="kelas"><span>
                 </span></span>
                 <span class="pull-right">
-                    <a href="'.site_url('kelas/edit/'.$m['id']).'" title="Edit"><i class="icon icon-edit"></i>Edit</a>
+                    <a href="' . site_url('kelas/edit/' . $m['id']) . '" title="Edit"><i class="icon icon-edit"></i>Edit</a>
                 </span>';
-                if ($m['aktif'] == 1) {
-                    $str_kelas .= '<b>'.$m['nama'].'</b>';
-                } else {
-                    $str_kelas .= '<b class="text-muted">'.$m['nama'].'</b>';
-                }
+            if ($m['aktif'] == 1) {
+                $str_kelas .= '<b>' . $m['nama'] . '</b>';
+            } else {
+                $str_kelas .= '<b class="text-muted">' . $m['nama'] . '</b>';
+            }
             $str_kelas .= '</div>';
 
-                $this->kelas_hirarki($str_kelas, $m['id'], $order);
+            $this->kelas_hirarki($str_kelas, $m['id'], $order);
             $str_kelas .= '</li>';
         }
 
-        if(count($kelas) > 0){
+        if (count($kelas) > 0) {
             $str_kelas .= '</ol>';
         }
     }
@@ -91,7 +92,7 @@ class Kelas extends MY_Controller
             )
         );
 
-        if ($this->form_validation->run('kelas/index') == TRUE AND !is_demo_app()) {
+        if ($this->form_validation->run('kelas/index') == TRUE and !is_demo_app()) {
             # insert kelas
             $nama = $this->input->post('nama', TRUE);
             $this->kelas_model->create($nama);
@@ -126,7 +127,7 @@ class Kelas extends MY_Controller
         );
 
         $data['kelas'] = $kelas;
-        if ($this->form_validation->run('kelas/edit') == TRUE AND !is_demo_app()) {
+        if ($this->form_validation->run('kelas/edit') == TRUE and !is_demo_app()) {
             $nama  = $this->input->post('nama', TRUE);
             if (empty($kelas['parent_id'])) {
                 $aktif = 1;
@@ -140,7 +141,7 @@ class Kelas extends MY_Controller
             # update kelas
             $this->kelas_model->update($id, $nama, $kelas['parent_id'], $kelas['urutan'], $aktif);
 
-            $this->session->set_flashdata('kelas', get_alert('success', $kelas['nama'].' berhasil diperbaharui.'));
+            $this->session->set_flashdata('kelas', get_alert('success', $kelas['nama'] . ' berhasil diperbaharui.'));
             redirect('kelas');
         }
 
@@ -151,32 +152,33 @@ class Kelas extends MY_Controller
         $this->twig->display('edit-kelas.html', $data);
     }
 
-    private function mapel_kelas_hirarki($view = '', $params = array()){
+    private function mapel_kelas_hirarki($view = '', $params = array())
+    {
         $parent = $this->kelas_model->retrieve_all(null, !empty($params['parent_id']) ? array('id' => $params['parent_id']) : array());
 
         $return = '';
         foreach ($parent as $p) {
-            $return .= '<div class="parent-kelas" id="parent-'.$p['id'].'">'.$p['nama'].'</div>';
+            $return .= '<div class="parent-kelas" id="parent-' . $p['id'] . '">' . $p['nama'] . '</div>';
 
             $sub_kelas = $this->kelas_model->retrieve_all($p['id'], !empty($params['sub_id']) ? array('id' => $params['sub_id']) : array());
             foreach ($sub_kelas as $s) {
-                $return .= '<div class="panel panel-default" id="subkelas-'.$s['id'].'" style="margin-left:25px;margin-bottom:5px;">';
+                $return .= '<div class="panel panel-default" id="subkelas-' . $s['id'] . '" style="margin-left:25px;margin-bottom:5px;">';
 
                 switch ($view) {
                     default:
                         $return .= '<div class="panel-heading">
-                            '.$s['nama'].'&nbsp;&nbsp;'.(($s['aktif'] == 0) ? '<span class="label label-warning">Kelas tidak aktif</span>' : '').'
-                            '.(($s['aktif'] == 1) ? '<a href="'.site_url('kelas/mapel_kelas/add/'.$p['id'].'/'.$s['id'].'/'.enurl_redirect(current_url())).'" class="btn btn-primary pull-right" style="margin-top:-5px;"><i class="icon-wrench"></i> Atur Matapelajaran</a>' : '').'
+                            ' . $s['nama'] . '&nbsp;&nbsp;' . (($s['aktif'] == 0) ? '<span class="label label-warning">Kelas tidak aktif</span>' : '') . '
+                            ' . (($s['aktif'] == 1) ? '<a href="' . site_url('kelas/mapel_kelas/add/' . $p['id'] . '/' . $s['id'] . '/') . '" class="btn btn-primary pull-right" style="margin-top:-5px;"><i class="icon-wrench"></i> Atur Matapelajaran</a>' : '') . '
                         </div>';
                         if ($s['aktif'] == 1) {
                             $return .= '<div class="panel-body">';
 
-                            $return .= get_flashdata('edit-mapel-kelas-'.$s['id']);
+                            $return .= get_flashdata('edit-mapel-kelas-' . $s['id']);
 
                             $retrieve_all = $this->mapel_model->retrieve_all_kelas(null, $s['id']);
                             $return .= '<table class="table table-striped table-condensed">
                             <tbody>';
-                                foreach ($retrieve_all as $v):
+                            foreach ($retrieve_all as $v) :
                                 $m = $this->mapel_model->retrieve($v['mapel_id']);
                                 if (empty($m)) {
                                     continue;
@@ -184,29 +186,29 @@ class Kelas extends MY_Controller
                                 $return .= '<tr>
                                     <td style="border-top:0px;">
                                         <div class="btn-group pull-right">';
-                                            if ($v['aktif'] == 0) {
-                                                $return .= '<a class="btn btn-success btn-small" href="'.site_url('kelas/mapel_kelas/aktifkan/'.$p['id'].'/'.$s['id'].'/'.$v['id'].'/'.enurl_redirect(current_url())).'"><i class="icon-ok"></i> Aktifkan</a>';
-                                            } else {
-                                                $return .= '<a class="btn btn-danger btn-small" href="#modal-'.$v['id'].'" data-toggle="modal"><i class="icon-trash"></i> Hapus</a>';
-                                            }
-                                        $return .= '</div>
+                                if ($v['aktif'] == 0) {
+                                    $return .= '<a class="btn btn-success btn-small" href="' . site_url('kelas/mapel_kelas/aktifkan/' . $p['id'] . '/' . $s['id'] . '/' . $v['id'] . '/') . '"><i class="icon-ok"></i> Aktifkan</a>';
+                                } else {
+                                    $return .= '<a class="btn btn-danger btn-small" href="#modal-' . $v['id'] . '" data-toggle="modal"><i class="icon-trash"></i> Hapus</a>';
+                                }
+                                $return .= '</div>
                                         <b>
-                                        '.$m['nama'].'
-                                        '.(($v['aktif'] == 0) ? '<span class="text-error"><i class="icon-info-sign"></i> Matapelajaran Kelas tidak aktif' : '').'
+                                        ' . $m['nama'] . '
+                                        ' . (($v['aktif'] == 0) ? '<span class="text-error"><i class="icon-info-sign"></i> Matapelajaran Kelas tidak aktif' : '') . '
                                         </b>
 
-                                        <div id="modal-'.$v['id'].'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div id="modal-' . $v['id'] . '" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-header">
                                                 <h3 id="myModalLabel">Anda yakin ingin menghapus Matapelajaran Kelas ini?</h3>
                                             </div>
                                             <div class="modal-footer">
                                                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Batal</button>
-                                                <a class="btn btn-danger" href="'.site_url('kelas/mapel_kelas/remove/'.$p['id'].'/'.$s['id'].'/'.$v['id'].'/'.enurl_redirect(current_url())).'">Tetap Hapus</a>
+                                                <a class="btn btn-danger" href="' . site_url('kelas/mapel_kelas/remove/' . $p['id'] . '/' . $s['id'] . '/' . $v['id'] . '/') . '">Tetap Hapus</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>';
-                                endforeach;
+                            endforeach;
                             $return .= '</tbody>
                             </table>';
                             $return .= '</div>';
@@ -216,7 +218,6 @@ class Kelas extends MY_Controller
 
                 $return .= '</div>';
             }
-
         }
 
         return $return;
@@ -248,11 +249,11 @@ class Kelas extends MY_Controller
                 }
 
                 if (empty($uri_back)) {
-                    $uri_back = site_url('kelas/mapel_kelas/#subkelas-'.$kelas_id);
+                    $uri_back = site_url('kelas/mapel_kelas/#subkelas-' . $kelas_id);
                 } else {
                     $uri_back = deurl_redirect($uri_back);
                     $uri_back = rtrim($uri_back, '/');
-                    $uri_back = $uri_back.'/#subkelas-'.$kelas_id;
+                    $uri_back = $uri_back . '/#subkelas-' . $kelas_id;
                 }
 
                 if (!is_demo_app()) {
@@ -260,9 +261,9 @@ class Kelas extends MY_Controller
                     $this->mapel_model->update_kelas($mapel_kelas_id, $mapel_kelas['kelas_id'], $mapel_kelas['mapel_id'], 1);
                 }
 
-                $this->session->set_flashdata('edit-mapel-kelas-'.$kelas['id'], get_alert('success', 'Matapelajaran kelas berhasil diaktifkan.'));
+                $this->session->set_flashdata('edit-mapel-kelas-' . $kelas['id'], get_alert('success', 'Matapelajaran kelas berhasil diaktifkan.'));
                 redirect($uri_back);
-            break;
+                break;
 
             case 'remove':
                 $parent_id      = (int)$segment_4;
@@ -282,11 +283,11 @@ class Kelas extends MY_Controller
                 }
 
                 if (empty($uri_back)) {
-                    $uri_back = site_url('kelas/mapel_kelas/#subkelas-'.$kelas_id);
+                    $uri_back = site_url('kelas/mapel_kelas/#subkelas-' . $kelas_id);
                 } else {
                     $uri_back = deurl_redirect($uri_back);
                     $uri_back = rtrim($uri_back, '/');
-                    $uri_back = $uri_back.'/#subkelas-'.$kelas_id;
+                    $uri_back = $uri_back . '/#subkelas-' . $kelas_id;
                 }
 
                 if (!is_demo_app()) {
@@ -294,9 +295,9 @@ class Kelas extends MY_Controller
                     $this->mapel_model->delete_kelas($mapel_kelas_id);
                 }
 
-                $this->session->set_flashdata('edit-mapel-kelas-'.$kelas['id'], get_alert('warning', 'Matapelajaran kelas berhasil dihapus.'));
+                $this->session->set_flashdata('edit-mapel-kelas-' . $kelas['id'], get_alert('warning', 'Matapelajaran kelas berhasil dihapus.'));
                 redirect($uri_back);
-            break;
+                break;
 
             case 'add':
                 $parent_id = (int)$segment_4;
@@ -315,7 +316,8 @@ class Kelas extends MY_Controller
                 }
 
                 if (empty($uri_back)) {
-                    $uri_back = site_url('kelas/mapel_kelas/add/'.$parent_id.'/'.$kelas_id);
+                    $uri_back = site_url('kelas/mapel_kelas/');
+                    // $uri_back = site_url('kelas/mapel_kelas/add/' . $parent_id . '/' . $kelas_id . '/');
                 } else {
                     $uri_back = deurl_redirect($uri_back);
                 }
@@ -338,24 +340,25 @@ class Kelas extends MY_Controller
 
                 $data['post_mapel'] = 0;
                 if (!empty($_POST['add-mapel'])) {
-                    if ($this->form_validation->run('mapel/add') == TRUE AND !is_demo_app()) {
+                    if ($this->form_validation->run('mapel/add') == TRUE and !is_demo_app()) {
                         $nama = $this->input->post('nama', TRUE);
                         $info = $this->input->post('info', TRUE);
                         $this->mapel_model->create($nama, $info);
 
                         $this->session->set_flashdata('mapel', get_alert('success', 'Matapelajaran baru berhasil ditambah.'));
-                        redirect('kelas/mapel_kelas/add/'.$parent_id.'/'.$kelas_id.'/'.enurl_redirect($uri_back));
+                        redirect('kelas/mapel_kelas/add/' . $parent_id . '/' . $kelas_id . '/');
+                        // redirect('kelas/mapel_kelas/add/' . $parent_id . '/' . $kelas_id . '/' . enurl_redirect($uri_back));
                     }
                     $data['post_mapel'] = 1;
                 }
 
-                if ($this->form_validation->run('kelas/mapel_kelas/add') == TRUE AND !is_demo_app()) {
+                if ($this->form_validation->run('kelas/mapel_kelas/add') == TRUE and !is_demo_app()) {
 
                     $mapel = $this->input->post('mapel', TRUE);
 
                     $mapel_post_id = array();
                     foreach ($mapel as $mapel_id) {
-                        if (is_numeric($mapel_id) AND $mapel_id > 0) {
+                        if (is_numeric($mapel_id) and $mapel_id > 0) {
                             # cek dulu
                             $check = $this->mapel_model->retrieve_kelas(null, $kelas_id, $mapel_id);
                             if (empty($check)) {
@@ -383,9 +386,10 @@ class Kelas extends MY_Controller
                     }
 
                     $this->session->set_flashdata('mapel', get_alert('success', 'Matapelajaran kelas berhasil disimpan.'));
-                    redirect('kelas/mapel_kelas/add/'.$parent_id.'/'.$kelas_id.'/'.enurl_redirect($uri_back));
+                    // redirect('kelas/mapel_kelas/add/'.$parent_id.'/'.$kelas_id.'/'.enurl_redirect($uri_back));
+                    redirect('kelas/mapel_kelas/add/' . $parent_id . '/' . $kelas_id . '/');
                 }
-            break;
+                break;
 
             default:
             case 'list':
@@ -393,7 +397,7 @@ class Kelas extends MY_Controller
                 if (!empty($_POST)) {
                     $post_parent_id = (int)$this->input->post('parent_kelas', true);
                     $post_sub_id    = (int)$this->input->post('sub_kelas', true);
-                    redirect('kelas/mapel_kelas/list/'.$post_parent_id.'/'.$post_sub_id);
+                    redirect('kelas/mapel_kelas/list/' . $post_parent_id . '/' . $post_sub_id);
                 }
 
                 $content_file    = 'list-mapel-kelas.html';
@@ -415,7 +419,7 @@ class Kelas extends MY_Controller
                 $data['mapel_kelas_hirarki'] = $this->mapel_kelas_hirarki('', array('parent_id' => $parent_kelas_id, 'sub_id' => $sub_kelas_id));
                 $data['parent_kelas']        = $this->kelas_model->retrieve_all(null, array('aktif' => 1));
 
-            break;
+                break;
         }
 
         $this->twig->display($content_file, $data);
